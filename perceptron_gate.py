@@ -26,7 +26,13 @@ def nand_gate(x1,x2):
         return 1
 
 def xor_gate(x1,x2):
-    return
+    a=nand_gate(x1,x2)
+    b=or_gate(x1,x2)
+    out=and_gate(a,b)    
+    if out>0.5:
+        return 1
+    else:
+        return 0
 
 def main():
     assert and_gate(1,1)==1
@@ -43,6 +49,11 @@ def main():
     assert nand_gate(1,0)==1
     assert nand_gate(0,1)==1
     assert nand_gate(0,0)==1
+
+    assert xor_gate(1,1)==0
+    assert xor_gate(1,0)==1
+    assert xor_gate(0,1)==1
+    assert xor_gate(0,0)==0
 
     return
 
