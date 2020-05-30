@@ -34,7 +34,7 @@ def predict(x,network):
     z3=sigmoid(np.dot(z2,w3)+b3)
     return np.argmax(z3)
 
-def main():
+def cal_each_accuracy():
     x_test,t_test=get_data()
     network=init_network()
     N=len(x_test)
@@ -48,14 +48,17 @@ def main():
             appear_cnt[t_test[i]]+=1
     return [accuracy_cnt[t_test[i]]/appear_cnt[t_test[i]]*100 for i in range(10)]
 
-if __name__=="__main__":
-    x=np.arange(0,10,1)
-    ans=main()
-    plt.title("accuracy of prediction")
-    plt.xlabel("number")
-    plt.ylabel("accuracy")
-    plt.bar(x,ans)
+def graph_plot(x,y):
+    plt.bar(x,y)
     plt.show()
+
+def main():
+    x=np.arange(0,10,1)
+    y=cal_each_accuracy()
+    graph_plot(x,y)
+
+if __name__=="__main__":
+    main()
 
 
 
